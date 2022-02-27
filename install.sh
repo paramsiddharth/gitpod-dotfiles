@@ -2,9 +2,7 @@
 
 # Add the keys
 [[ ! -z $GNUGPG  ]] &&
-cd ~ &&
-rm -rf .gnupg &&
-echo $GNUGPG | base64 -d | tar --no-same-owner -xzvf -
+gpg --verbose --batch --import <(echo $GNUGPG|base64 -d)
 
 # Set up the keys
 [[ ! -z $GNUPG_SIGNING_KEY  ]] &&
